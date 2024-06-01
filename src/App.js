@@ -26,9 +26,12 @@ function App() {
             setTimeLeft(timeLeft);
         }
 
-        if (!stop && !isPaused) {
-            startTimer();
+        if (isPaused) {
+            resumeTimer();
         }
+
+        if (stop || isPaused || !userTimerInput) return; // Don't start if input is empty, or already stopped or paused
+        startTimer();
 
         setUserTimeInput("");
     };
@@ -57,6 +60,11 @@ function App() {
         }, 1000);
     }
 
+    const resumeTimer = () => {
+        startTimer(timeLeft);
+        setIsPaused(false);
+    };
+
     // function stopTimer() {
     //     clearInterval(intervalRef.current);
     //     setStop(true);
@@ -65,6 +73,7 @@ function App() {
     const resetTimer = () => {
         clearInterval(intervalRef.current);
         setStop(false);
+        setIsPaused(false);
         setTimeLeft(0);
         // setUserTimerInput("");
         setDays(0);
