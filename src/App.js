@@ -1,9 +1,7 @@
-import useCountDown from "./useCountDown";
 import TimerInput from "./components/TimerInput.jsx";
 import TimerDisplay from "./components/TimerDisplay.jsx";
 import TimerControls from "./components/TimerControls.jsx";
-import { useEffect, useState, useRef } from "react";
-import useTest from "./useTest.jsx";
+import { useState, useRef } from "react";
 
 function App() {
     const [userTimerInput, setUserTimeInput] = useState("");
